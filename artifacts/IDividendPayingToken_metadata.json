@@ -1,0 +1,158 @@
+{
+	"compiler": {
+		"version": "0.8.14+commit.80d49f37"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "weiAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "DividendWithdrawn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "weiAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "DividendsDistributed",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "distributeDividends",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_owner",
+						"type": "address"
+					}
+				],
+				"name": "dividendOf",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "withdrawDividend",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"events": {
+				"DividendWithdrawn(address,uint256)": {
+					"details": "This event MUST emit when an address withdraws their dividend.",
+					"params": {
+						"to": "The address which withdraws ether from this contract.",
+						"weiAmount": "The amount of withdrawn ether in wei."
+					}
+				},
+				"DividendsDistributed(address,uint256)": {
+					"details": "This event MUST emit when ether is distributed to token holders.",
+					"params": {
+						"from": "The address which sends ether to this contract.",
+						"weiAmount": "The amount of distributed ether in wei."
+					}
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"distributeDividends()": {
+					"details": "SHOULD distribute the paid ether to token holders as dividends.  SHOULD NOT directly transfer ether to token holders in this function.  MUST emit a `DividendsDistributed` event when the amount of distributed ether is greater than 0."
+				},
+				"dividendOf(address)": {
+					"params": {
+						"_owner": "The address of a token holder."
+					},
+					"returns": {
+						"_0": "The amount of dividend in wei that `_owner` can withdraw."
+					}
+				},
+				"withdrawDividend()": {
+					"details": "SHOULD transfer `dividendOf(msg.sender)` wei to `msg.sender`, and `dividendOf(msg.sender)` SHOULD be 0 after the transfer.  MUST emit a `DividendWithdrawn` event if the amount of ether transferred is greater than 0."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"distributeDividends()": {
+					"notice": "Distributes ether to token holders as dividends."
+				},
+				"dividendOf(address)": {
+					"notice": "View the amount of dividend in wei that an address can withdraw."
+				},
+				"withdrawDividend()": {
+					"notice": "Withdraws the ether distributed to the sender."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"h4g.sol": "IDividendPayingToken"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"h4g.sol": {
+			"keccak256": "0x258b9d7ca9e5d0411cc63345454118d0c29af92f0f28c727dcbb0cb1bbcb086e",
+			"license": "Unlicensed",
+			"urls": [
+				"bzz-raw://bf319b6c3ee938a6e7fbd0a981e2dee62cf55cb1480d40f37cc170f6be0c357d",
+				"dweb:/ipfs/QmZ2FqANp18nYjmxBjmZhgiXo4RzmcUEDgnHo7ama3yzUC"
+			]
+		}
+	},
+	"version": 1
+}
